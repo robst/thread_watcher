@@ -45,8 +45,8 @@ Let's say you type something like
 
 And you want to kill this worker. So just use the process id to kill the thread
 
-```
-ThreadWatcher::Monitor.instance.kill 1452333224
+```ruby
+  ThreadWatcher::Monitor.instance.kill 1452333224
 ```
 
 Your thread is now killed.
