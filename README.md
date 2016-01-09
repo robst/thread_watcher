@@ -1,7 +1,5 @@
 # ThreadWatcher
 
-# TheGardener
-
 You need to monitor your threads and kill one specific thread in another part of your application? Then this Gem could be usefull for you. Use it with any ruby version greater or equal than 1.8.7
 
 
