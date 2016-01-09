@@ -8,7 +8,7 @@ You need to monitor your threads and kill one specific thread in another part of
 hm, yeah. just add this to your Gemfile:
 
 ```ruby
-gem 'thread_watcher', '~> 0.1.1'
+gem 'thread_watcher', '~> 0.1.2'
 ```
 
 And then execute:
@@ -50,6 +50,7 @@ And you want to kill this worker. So just use the process id to kill the thread
 ```
 
 Your thread is now killed.
+
 
 
 

@@ -13,8 +13,8 @@ module ThreadWatcher
       @process_watch.run &block
     end
 
-    def self.run
-      instance.run
+    def self.run &block
+      instance.run &block
     end
 
     def kill id

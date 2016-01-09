@@ -15,6 +15,10 @@ module ThreadWatcher
       def alive?
         @thread.alive?
       end
+      
+      def to_s
+        "#{id}\t#{alive?}"
+      end
     end
 
     def initialize
