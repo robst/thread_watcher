@@ -6,16 +6,13 @@ require 'thread_watcher/version'
 Gem::Specification.new do |spec|
   spec.name          = "thread_watcher"
   spec.version       = ThreadWatcher::VERSION
-  spec.authors       = ["robst"]
+  spec.authors       = ["Robert Starke"]
   spec.email         = ["robertst81@gmail.com"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Monitor your Threads exactly and kill them from each Point of your Application.}
+  spec.description   = %q{You need to monitor your threads and kill one specific thread in another part of your application? Then this Gem could be usefull for you. Use it with any ruby version greater or equal than 1.8.7}
+  spec.homepage      = "https://github.com/robst/thread_watcher"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
@@ -25,4 +22,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.8"
   spec.add_development_dependency "rake", "~> 10.0"
+
+  spec.required_ruby_version = '>= 1.8.7'
 end
