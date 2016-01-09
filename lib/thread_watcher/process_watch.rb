@@ -15,7 +15,7 @@ module ThreadWatcher
       def alive?
         @thread.alive?
       end
-      
+
       def to_s
         "#{id}\t#{alive?}"
       end
@@ -43,5 +43,14 @@ module ThreadWatcher
         kill key
       end
     end
+
+    def status
+      puts "ID\tRunning?"
+      @threads.each do |key, thread|
+        puts thread.to_s
+      end
+      ''
+    end
+    
   end
 end
