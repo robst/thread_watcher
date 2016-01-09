@@ -1,38 +1,89 @@
 # ThreadWatcher
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/thread_watcher`. To experiment with that code, run `bin/console` for an interactive prompt.
+# TheGardener
 
-TODO: Delete this and the text above, and describe your gem
+You need to monitor your threads and kill one specific thread in another part of your application? Then this Gem could be usefull for you. Use it with any ruby version greater or equal than 1.8.7
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
+hm, yeah. just add this to your Gemfile:
 
 ```ruby
-gem 'thread_watcher'
+gem 'thread_watcher', '~> 0.1.0'
 ```
 
 And then execute:
-
-    $ bundle
-
+```
+  $ bundle
+```
 Or install it yourself as:
+```
+  $ gem install thread_watcher
+```
 
-    $ gem install thread_watcher
+Huh, ready to use!
 
 ## Usage
 
-TODO: Write usage instructions here
+Ok, let's say you want to run a big process separatly in a thread. 
+Something big like sleep(10) ;). 
 
-## Development
+```
+  ThreadWatcher::Monitor.instance.run { sleep 10 }
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+Run needs a block to work and return the internal process id. 
+This could be something like `1452333019`
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+If your thread is ok, so let them work.
+ThreadWatcher starts automaticly a cleaning task to kill dead threads every minute.
+
+Let's say you type something like
+
+```
+  ThreadWatcher::Monitor.instance.run { sleep 10000000 }
+```
+
+And you want to kill this worker. So just use the process id to kill the thread
+
+```
+ThreadWatcher::Monitor.instance.kill 1452333224
+```
+
+Your thread is now killed.
+
+
+
+## The MIT License (MIT)
+
+Copyright (c) 2015  [Robert Starke](robertst81+github@gmail.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+## Questions?
+
+If you have further questions, code smells, hints or a beer, just contact me :)
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/thread_watcher/fork )
+1. Fork it ( https://github.com/robst/the_gardener/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
