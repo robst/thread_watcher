@@ -1,7 +1,7 @@
 module ThreadWatcher
   class ProcessWatch
     attr_accessor :threads
-    class ThreadHoler
+    class ThreadHolder
       attr_accessor :thread, :id
       def initialize thread
         @thread = thread
@@ -27,7 +27,7 @@ module ThreadWatcher
     end
 
     def run &block
-      thread_holder = ThreadHoler.new(Thread.new { block.call })
+      thread_holder = ThreadHolder.new(Thread.new { block.call })
       @threads[thread_holder.id] = thread_holder
       thread_holder.id
     end
