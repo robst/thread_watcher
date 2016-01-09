@@ -27,7 +27,7 @@ Huh, ready to use!
 Ok, let's say you want to run a big process separatly in a thread. 
 Something big like sleep(10) ;). 
 
-```
+```ruby
   ThreadWatcher::Monitor.instance.run { sleep 10 }
 ```
 
@@ -39,7 +39,7 @@ ThreadWatcher starts automaticly a cleaning task to kill dead threads every minu
 
 Let's say you type something like
 
-```
+```ruby
   ThreadWatcher::Monitor.instance.run { sleep 10000000 }
 ```
 
