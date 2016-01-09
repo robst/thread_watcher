@@ -28,7 +28,7 @@ Ok, let's say you want to run a big process separatly in a thread.
 Something big like sleep(10) ;). 
 
 ```ruby
-  ThreadWatcher::Monitor.instance.run { sleep 10 }
+  ThreadWatcher::Monitor.run { sleep 10 }
 ```
 
 Run needs a block to work and return the internal process id. 
@@ -40,13 +40,13 @@ ThreadWatcher starts automaticly a cleaning task to kill dead threads every minu
 Let's say you type something like
 
 ```ruby
-  ThreadWatcher::Monitor.instance.run { sleep 10000000 }
+  ThreadWatcher::Monitor.run { sleep 10000000 }
 ```
 
 And you want to kill this worker. So just use the process id to kill the thread
 
 ```ruby
-  ThreadWatcher::Monitor.instance.kill 1452333224
+  ThreadWatcher::Monitor.kill 1452333224
 ```
 
 Your thread is now killed.
