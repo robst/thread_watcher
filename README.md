@@ -98,7 +98,7 @@ If you have further questions, code smells, hints or a beer, just contact me :)
 
 ## Contributing
 
-1. Fork it ( https://github.com/robst/the_gardener/fork )
+1. Fork it ( https://github.com/robst/thread_watcher/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
