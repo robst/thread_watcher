@@ -25,6 +25,7 @@ module ThreadWatcher
     def run &block
       thread_holder = ThreadHoler.new(Thread.new { block.call })
       @threads[thread_holder.id] = thread_holder
+      thread_holder.id
     end
 
     def kill id
