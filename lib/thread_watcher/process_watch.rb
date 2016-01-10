@@ -1,3 +1,5 @@
+require "thread_watcher/thread_formatter"
+
 module ThreadWatcher
   class ProcessWatch
     attr_accessor :threads
@@ -14,10 +16,6 @@ module ThreadWatcher
 
       def alive?
         @thread.alive?
-      end
-
-      def to_s
-        "|#{id}\t|#{alive?}\t\t|\t#{runtime}\t\t|"
       end
 
       def runtime
@@ -53,9 +51,9 @@ module ThreadWatcher
     end
 
     def status
-      puts "|ID\t\t|Running?\t|Runtime in Seconds\t|"
+      ThreadFormatter.headline
       @threads.each do |key, thread|
-        puts thread.to_s
+        ThreadFormatter.data thread
       end
       ''
     end
