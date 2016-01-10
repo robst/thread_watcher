@@ -1,5 +1,5 @@
 require "thread_watcher/version"
-
+require "thread_watcher/process_watch"
 module ThreadWatcher
   require 'singleton'
   class Monitor
