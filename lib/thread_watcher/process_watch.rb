@@ -39,6 +39,7 @@ module ThreadWatcher
     end
 
     def kill id
+      return if @threads[id].nil?
       @threads[id].stop!
       @threads.delete id
     end
