@@ -8,7 +8,7 @@ You need to monitor your threads and kill one specific thread in another part of
 hm, yeah. just add this to your Gemfile:
 
 ```ruby
-gem 'thread_watcher', '~> 0.2.1'
+gem 'thread_watcher', '~> 0.3.0'
 ```
 
 And then execute:
@@ -61,12 +61,12 @@ If you need more information about these threads so use
 And you get a simple overview like
 
 ```
-ID  Running?
-1452336691  false
-1452336714  true
-1452336723  false
-1452336724  false
-1452336726  true
+|ID         |Running? |Runtime in Seconds |
+|1452405225 |true     | 120               |
+|1452405227 |true     | 118               |
+|1452405228 |true     | 117               |
+|1452405334 |false    | 11                |
+
 ```
 
 
