@@ -5,7 +5,7 @@ module ThreadWatcher
       attr_accessor :thread, :id
       def initialize thread
         @thread = thread
-        @id = Time.now.to_i
+        @id = time_to_i
       end
 
       def stop!
@@ -17,7 +17,15 @@ module ThreadWatcher
       end
 
       def to_s
-        "#{id}\t#{alive?}"
+        "|#{id}\t|#{alive?}\t\t|\t#{runtime}\t\t|"
+      end
+
+      def runtime
+        time_to_i - @id
+      end
+
+      def time_to_i
+        Time.now.to_i
       end
     end
 
@@ -45,7 +53,7 @@ module ThreadWatcher
     end
 
     def status
-      puts "ID\tRunning?"
+      puts "|ID\t\t|Running?\t|Runtime in Seconds\t|"
       @threads.each do |key, thread|
         puts thread.to_s
       end
