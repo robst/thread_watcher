@@ -4,10 +4,11 @@ module ThreadWatcher
   class ProcessWatch
     attr_accessor :threads
     class ThreadHolder
-      attr_accessor :thread, :id
-      def initialize thread
+      attr_accessor :thread, :id, :options
+      def initialize thread, options
         @thread = thread
         @id = time_to_i
+        @options = available_options.merge options
       end
 
       def stop!
@@ -25,15 +26,22 @@ module ThreadWatcher
       def time_to_i
         Time.now.to_i
       end
+
+      private
+
+      def available_options
+        { name: nil }
+      end
     end
 
     def initialize
       @threads = {}
-      run { while true; self.clear!; sleep(60); end; }
+      run(name:'Cleaning Jobs') { while true; self.clear!; sleep(60); end; }
     end
 
-    def run &block
-      thread_holder = ThreadHolder.new(Thread.new { block.call })
+    def run options = {}, &block
+      thread_holder = ThreadHolder.new(Thread.new { block.call }, options)
+      thread_holder
       @threads[thread_holder.id] = thread_holder
       thread_holder.id
     end

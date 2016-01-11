@@ -10,12 +10,12 @@ module ThreadWatcher
       @process_watch = ThreadWatcher::ProcessWatch.new
     end
 
-    def run &block
-      @process_watch.run &block
+    def run options = {}, &block
+      @process_watch.run options, &block
     end
 
-    def self.run &block
-      instance.run &block
+    def self.run options = {}, &block
+      instance.run options, &block
     end
 
     def kill id
