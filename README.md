@@ -8,7 +8,7 @@ You need to monitor your threads and kill one specific thread in another part of
 hm, yeah. just add this to your Gemfile:
 
 ```ruby
-gem 'thread_watcher', '~> 0.5.0'
+gem 'thread_watcher', '~> 0.6.0'
 ```
 
 And then execute:
@@ -37,6 +37,12 @@ This could be something like `1452333019`
 If your thread is ok, so let them work.
 ThreadWatcher starts automaticly a cleaning task to kill dead threads every minute.
 
+You can also specify your threads with a name if you need it.
+
+```ruby
+  ThreadWatcher::Monitor.run(name:'My Job') { sleep 10 }
+```
+
 Let's say you type something like
 
 ```ruby
@@ -61,11 +67,13 @@ If you need more information about these threads so use
 And you get a simple overview like
 
 ```
-|ID         |Running? |Runtime in Seconds |
-|1452405225 |true     | 120               |
-|1452405227 |true     | 118               |
-|1452405228 |true     | 117               |
-|1452405334 |false    | 11                |
+|ID         |Running? |Runtime in Seconds |Name
+|1452537945 |true     | 177               |Cleaning Jobs
+|1452538091 |false    | 31                |sleeper9
+|1452538106 |true     | 16                |
+|1452538116 |true     | 6                 |sleeper50
+|1452538121 |true     | 1                 |sleeper30
+
 
 ```
 
