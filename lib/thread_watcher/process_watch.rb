@@ -30,13 +30,13 @@ module ThreadWatcher
       private
 
       def available_options
-        { name: nil }
+        { :name => nil }
       end
     end
 
     def initialize
       @threads = {}
-      run(name:'Cleaning Jobs') { while true; self.clear!; sleep(60); end; }
+      run(:name => 'Cleaning Jobs') { while true; self.clear!; sleep(60); end; }
     end
 
     def run options = {}, &block
