@@ -1,6 +1,8 @@
 # ThreadWatcher
 
-You need to monitor your threads and kill one specific thread in another part of your application? Then this Gem could be usefull for you. Use it with any ruby version greater or equal than 1.8.7
+You need to monitor your threads and kill one specific thread or restart them after scheduling in another part of your application? Then this Gem could be usefull for you. 
+
+Build for ruby 1.8.7 and newer.
 
 
 ## Installation
@@ -8,7 +10,7 @@ You need to monitor your threads and kill one specific thread in another part of
 hm, yeah. just add this to your Gemfile:
 
 ```ruby
-gem 'thread_watcher', '~> 0.6.0'
+gem 'thread_watcher', '~> 0.7.0'
 ```
 
 And then execute:
@@ -35,32 +37,7 @@ Run needs a block to work and return the internal process id.
 This could be something like `1452333019`
 
 If your thread is ok, so let them work.
-ThreadWatcher starts automaticly a cleaning task to kill dead threads every minute.
-
-You can also specify your threads with a name if you need it.
-
-```ruby
-  ThreadWatcher::Monitor.run(name:'My Job') { sleep 10 }
-```
-
-You may want to hold a process, to restart them after when he died? So you can use the keep_alive option
-
-```ruby
-  ThreadWatcher::Monitor.run(name:'My Job', keep_alive: true) { sleep 10 }
-```
-
-Now, the process won't be killed when he's done. So you can restart them with
-
-```ruby
-  ThreadWatcher::Monitor.restart 1452333224
-```
-
-But now, you can't kill them with `ThreadWatcher::Monitor.restart 1452333224`.
-If you want to kill these process then use 
-
-```ruby
-  ThreadWatcher::Monitor.kill! 1452333224
-```
+ThreadWatcher starts automaticly a cleaning task to kill all dead threads every minute. You can skip this feature with the option key `keep alive`
 
 Let's say you type something like
 
@@ -95,6 +72,37 @@ And you get a simple overview like
 
 
 ```
+
+### Options
+
+There are some options to specify the behaviour of your processes.
+
+You can also specify your threads with a name if you need it.
+
+```ruby
+  ThreadWatcher::Monitor.run(name: 'My Job') { sleep 10 }
+```
+
+Sometimes you may want to hold a process instead of automaticly killing them after a minute. For statistics or to restart them. So you can use the `keep_alive` option
+
+```ruby
+  ThreadWatcher::Monitor.run(name:'My Job', keep_alive: true) { sleep 10 }
+```
+
+Now, the process won't be killed automaticly when he's done. So you can restart them with
+
+```ruby
+  ThreadWatcher::Monitor.restart 1452333224
+```
+
+But now, you can't kill them manually with `ThreadWatcher::Monitor.kill 1452333224`.
+If you want to kill these process manually then use 
+
+```ruby
+  ThreadWatcher::Monitor.kill! 1452333224
+```
+
+
 
 
 ## The MIT License (MIT)
