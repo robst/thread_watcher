@@ -43,6 +43,25 @@ You can also specify your threads with a name if you need it.
   ThreadWatcher::Monitor.run(name:'My Job') { sleep 10 }
 ```
 
+You may want to hold a process, to restart them after when he died? So you can use the keep_alive option
+
+```ruby
+  ThreadWatcher::Monitor.run(name:'My Job', keep_alive: true) { sleep 10 }
+```
+
+Now, the process won't be killed when he's done. So you can restart them with
+
+```ruby
+  ThreadWatcher::Monitor.restart 1452333224
+```
+
+But now, you can't kill them with `ThreadWatcher::Monitor.restart 1452333224`.
+If you want to kill these process then use 
+
+```ruby
+  ThreadWatcher::Monitor.kill! 1452333224
+```
+
 Let's say you type something like
 
 ```ruby
