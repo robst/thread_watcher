@@ -25,7 +25,23 @@ module ThreadWatcher
     def self.kill id
       instance.kill id
     end
-    
+
+    def kill! id
+      @process_watch.kill! id
+    end
+
+    def self.kill! id
+      instance.kill! id
+    end
+
+    def restart id
+      @process_watch.restart id
+    end
+
+    def self.restart id
+      instance.restart id
+    end
+
     def status
       @process_watch.status
     end
