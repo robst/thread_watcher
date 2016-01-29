@@ -41,7 +41,7 @@ module ThreadWatcher
     def initialize
       @threads = {}
       @blocks = {}
-      run(:name => 'Cleaning Jobs', :keep_alive => true) { while true; self.clear!; sleep(5); end; }
+      run(:name => 'Cleaning Jobs', :keep_alive => true) { while true; self.clear!; sleep(60); end; }
     end
 
     def run options = {}, &block
