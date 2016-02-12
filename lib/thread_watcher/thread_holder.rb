@@ -1,15 +1,15 @@
 module ThreadWatcher
   class ThreadHolder
-    attr_accessor :thread, :id, :options, :block
+    attr_accessor :thread, :id, :options, :block, :start_time
     def initialize block, options
       @block = block
-      @id = time_to_i
+      set_id
       @options = available_options.merge options
     end
 
-    def run!
-      puts "now running"
-      Thread.new{ block.call }
+    def start!
+      initialize_starttime
+      @thread = Thread.new{ block.call }
     end
 
     def stop!
@@ -17,7 +17,8 @@ module ThreadWatcher
     end
     
     def restart!
-      @thread = Thread.new { block.call }
+      stop!
+      start!
     end
 
     def alive?
@@ -25,7 +26,7 @@ module ThreadWatcher
     end
 
     def runtime
-      time_to_i - @id
+      time_to_i - start_time
     end
 
     def time_to_i
@@ -36,6 +37,14 @@ module ThreadWatcher
 
     def available_options
       { :name => nil, :keep_alive => false }
+    end
+
+    def initialize_starttime
+      @start_time = time_to_i
+    end
+
+    def set_id
+      @id = start_time || time_to_i
     end
   end
 end
