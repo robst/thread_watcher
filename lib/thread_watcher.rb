@@ -1,4 +1,6 @@
 require "thread_watcher/version"
+require "thread_watcher/thread_formatter"
+require "thread_watcher/thread_holder"
 require "thread_watcher/process_watch"
 
 module ThreadWatcher
