@@ -10,7 +10,7 @@ Build for ruby 1.8.7 and newer.
 hm, yeah. just add this to your Gemfile:
 
 ```ruby
-gem 'thread_watcher', '~> 0.7.0'
+gem 'thread_watcher', '~> 0.8.0'
 ```
 
 And then execute:
