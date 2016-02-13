@@ -1,8 +1,8 @@
 # ThreadWatcher
 
-You need to monitor your threads and kill one specific thread or restart them after scheduling in another part of your application? Then this Gem could be usefull for you. 
+You need to monitor some big background tasks and kill one specific thread or restart them after scheduling in another part of your application. This Gem put each task in a separate thread, which you can start, stop or restart.
 
-Build for ruby 1.8.7 and newer.
+Compatible with any ruby version greater or equal than 1.8.7.
 
 
 ## Installation

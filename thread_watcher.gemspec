@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["robertst81@gmail.com"]
 
 
-  spec.summary       = %q{Monitor your Threads exactly and kill them from each Point of your Application.}
-  spec.description   = %q{You need to monitor your threads and kill one specific thread or restart them after scheduling in another part of your application? Then this Gem could be usefull for you. Use it with any ruby version greater or equal than 1.8.7. See detailed information at the github Page.}
+  spec.summary       = %q{Monitor Tasks and kill or restart them from each Point of your Application.}
+  spec.description   = %q{You need to monitor some big background tasks and kill one specific thread or restart them after scheduling in another part of your application? Then this Gem could be usefull for you. Compatible with any ruby version greater or equal than 1.8.7. See detailed information at the github Page.}
   spec.homepage      = "https://github.com/robst/thread_watcher"
   spec.license       = "MIT"
 
