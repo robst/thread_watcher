@@ -36,7 +36,7 @@ module ThreadWatcher
     private
 
     def available_options
-      { :name => nil, :keep_alive => false }
+      { :name => :noname, :keep_alive => false }
     end
 
     def initialize_starttime
