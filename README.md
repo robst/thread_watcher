@@ -10,7 +10,7 @@ Compatible with any ruby version greater or equal than 1.8.7.
 hm, yeah. just add this to your Gemfile:
 
 ```ruby
-gem 'thread_watcher', '~> 0.8.0'
+gem 'thread_watcher', '~> 0.9.0'
 ```
 
 And then execute:
@@ -48,7 +48,7 @@ Let's say you type something like
 And you want to kill this worker. So just use the process id to kill the thread
 
 ```ruby
-  ThreadWatcher::Monitor.kill 1452333224
+  ThreadWatcher::Monitor.kill! 1452333224
 ```
 
 Your thread is now killed.
@@ -66,7 +66,7 @@ And you get a simple overview like
 |ID         |Running? |Runtime in Seconds |Name
 |1452537945 |true     | 177               |Cleaning Jobs
 |1452538091 |false    | 31                |sleeper9
-|1452538106 |true     | 16                |
+|1452538106 |true     | 16                |noname
 |1452538116 |true     | 6                 |sleeper50
 |1452538121 |true     | 1                 |sleeper30
 
@@ -95,13 +95,7 @@ Now, the process won't be killed automaticly when he's done. So you can restart 
   ThreadWatcher::Monitor.restart 1452333224
 ```
 
-But now, you can't kill them manually with `ThreadWatcher::Monitor.kill 1452333224`.
-If you want to kill these process manually then use 
-
-```ruby
-  ThreadWatcher::Monitor.kill! 1452333224
-```
-
+You can also kill your process with a keep_alive option by using the `kill!` command.
 
 
 
