@@ -2,15 +2,16 @@
 
 You need to monitor some big background tasks and kill one specific thread or restart them after scheduling in another part of your application. This Gem put each task in a separate thread, which you can start, stop or restart.
 
-Compatible with any ruby version greater or equal than 1.8.7.
-
+## Important
+If you really need a Version which is working with ruby 1.8.7 switch to [ThreadWatcher Version 0.9.0](https://github.com/robst/thread_watcher/tree/v0.9.0)
+Ruby 1.8.7 support removed in Version 1.0.0
 
 ## Installation
 
 hm, yeah. just add this to your Gemfile:
 
 ```ruby
-gem 'thread_watcher', '~> 0.9.0'
+gem 'thread_watcher', '~> 1.0.0'
 ```
 
 And then execute:
@@ -26,14 +27,14 @@ Huh, ready to use!
 
 ## Usage
 
-Ok, let's say you want to run a big process separatly in a thread. 
-Something big like sleep(10) ;). 
+Ok, let's say you want to run a big process separatly in a thread.
+Something big like sleep(10) ;).
 
 ```ruby
   ThreadWatcher::Monitor.run { sleep 10 }
 ```
 
-Run needs a block to work and return the internal process id. 
+Run needs a block to work and return the internal process id.
 This could be something like `1452333019`
 
 If your thread is ok, so let them work.
