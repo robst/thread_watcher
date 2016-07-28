@@ -20,11 +20,6 @@ module ThreadWatcher
       instance.run options, &block
     end
 
-    def self.kill id
-      warn "[DEPRECATION] `kill` is deprecated.  Please use `kill!` instead."
-      instance.kill! id
-    end
-
     def kill! id
       @process_watch.kill! id
     end
