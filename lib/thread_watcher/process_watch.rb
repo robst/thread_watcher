@@ -52,8 +52,8 @@ module ThreadWatcher
     private
 
     def start_cleaning_job
-      run(:name => 'Cleaning Jobs', :keep_alive => true) { while true; self.clear!; sleep(60); end; }
+      run(name: 'Cleaning Jobs', keep_alive: true) { while true; self.clear!; sleep(60); end; }
     end
-    
+
   end
 end
