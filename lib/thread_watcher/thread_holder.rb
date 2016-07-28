@@ -15,7 +15,7 @@ module ThreadWatcher
     def stop!
       @thread.kill
     end
-    
+
     def restart!
       stop!
       start!
@@ -36,7 +36,7 @@ module ThreadWatcher
     private
 
     def available_options
-      { :name => :noname, :keep_alive => false }
+      { name: :noname, keep_alive: false }
     end
 
     def initialize_starttime
