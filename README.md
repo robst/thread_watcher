@@ -11,7 +11,7 @@ Ruby 1.8.7 support removed in Version 1.0.0
 hm, yeah. just add this to your Gemfile:
 
 ```ruby
-gem 'thread_watcher', '~> 1.0.0'
+gem 'thread_watcher', '~> 1.1.0'
 ```
 
 And then execute:
@@ -35,7 +35,7 @@ Something big like sleep(10) ;).
 ```
 
 Run needs a block to work and return the internal process id.
-This could be something like `1452333019`
+This could be something like `4`
 
 If your thread is ok, so let them work.
 ThreadWatcher starts automaticly a cleaning task to kill all dead threads every minute. You can skip this feature with the option key `keep alive`
@@ -49,7 +49,7 @@ Let's say you type something like
 And you want to kill this worker. So just use the process id to kill the thread
 
 ```ruby
-  ThreadWatcher::Monitor.kill! 1452333224
+  ThreadWatcher::Monitor.kill! 6
 ```
 
 Your thread is now killed.
@@ -65,11 +65,11 @@ And you get a simple overview like
 
 ```
 |ID         |Running? |Runtime in Seconds |Name
-|1452537945 |true     | 177               |Cleaning Jobs
-|1452538091 |false    | 31                |sleeper9
-|1452538106 |true     | 16                |noname
-|1452538116 |true     | 6                 |sleeper50
-|1452538121 |true     | 1                 |sleeper30
+|4 |true     | 177               |Cleaning Jobs
+|5 |false    | 31                |sleeper9
+|7 |true     | 16                |noname
+|8 |true     | 6                 |sleeper50
+|9 |true     | 1                 |sleeper30
 
 
 ```
@@ -93,7 +93,7 @@ Sometimes you may want to hold a process instead of automaticly killing them aft
 Now, the process won't be killed automaticly when he's done. So you can restart them with
 
 ```ruby
-  ThreadWatcher::Monitor.restart 1452333224
+  ThreadWatcher::Monitor.restart 5
 ```
 
 You can also kill your process with a keep_alive option by using the `kill!` command.
