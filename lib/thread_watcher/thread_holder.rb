@@ -3,8 +3,8 @@ module ThreadWatcher
     attr_accessor :thread, :id, :options, :block, :start_time
     def initialize block, options
       @block = block
-      set_id
       @options = available_options.merge options
+      set_id
     end
 
     def start!
@@ -44,7 +44,7 @@ module ThreadWatcher
     end
 
     def set_id
-      @id = start_time || time_to_i
+      @id = options[:id]
     end
   end
 end

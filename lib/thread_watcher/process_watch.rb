@@ -4,10 +4,12 @@ module ThreadWatcher
 
     def initialize
       @threads = {}
+      @current_id = 1
       start_cleaning_job
     end
 
     def run options = {}, &block
+      options = options.merge(id: next_id)
       thread_holder = ThreadHolder.new(block, options)
       thread_holder.start!
       @threads[thread_holder.id] = thread_holder
@@ -50,6 +52,11 @@ module ThreadWatcher
     end
 
     private
+
+    def next_id
+      @current_id += 1
+      @current_id
+    end
 
     def start_cleaning_job
       run(name: 'Cleaning Jobs', keep_alive: true) { while true; self.clear!; sleep(60); end; }
